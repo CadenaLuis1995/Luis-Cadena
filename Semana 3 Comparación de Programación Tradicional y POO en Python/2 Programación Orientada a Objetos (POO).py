@@ -1,31 +1,24 @@
 #Programación Orientada a Objetos (POO)
+#Métodos de la clase para ingresar datos y calcular el promedio semanal.
 
-
-class Registrotempertuarassemana:
+class ClimaSemanal:
     def __init__(self):
         self.temperaturas = []
 
-# Método para ingresar las temperaturas diarias
-    def ingresar_temperaturas_diarias(self):#
-        for i in range(7):
-            temperatura = float(input(f"Ingrese la temperatura del día {i+1}: "))
-            self.temperaturas.append(temperatura)
+    def ingresar_temperatura(self, temperatura):
+        self.temperaturas.append(temperatura)
 
-#Método para calcular el promedio semanal de temperaturas
-    def calcular_promedio_semanal(self):
-
-#Retorna el promedio de las temperaturas ingresadas.
-
-        if not self.temperaturas:
-            return 0
-        promedio = sum(self.temperaturas) / len(self.temperaturas)
+    def calcular_promedio(self):
+        suma_temperaturas = sum(self.temperaturas)
+        promedio = suma_temperaturas / len(self.temperaturas)
         return promedio
 
-def main():
-    registro = Registrotempertuarassemana()
-    registro.ingresar_temperaturas_diarias()
-    promedio = registro.calcular_promedio_semanal()
-    print(f"El promedio semanal de temperaturas es: {promedio:.2f} ")
+clima_semanal = ClimaSemanal()
 
-if __name__ == "__main__":
-    main()
+for dia in range(7):
+    temperatura = float(input(f"Ingrese la temperatura del día {dia+1}: "))
+    clima_semanal.ingresar_temperatura(temperatura)
+
+promedio_semanal = clima_semanal.calcular_promedio()
+
+print(f"El promedio semanal del clima es: {promedio_semanal}")

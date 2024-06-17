@@ -2,32 +2,19 @@
 #ejemplo entrada de datos diarios (temperaturas) y el cálculo del promedio semanal
 # Programación Orientada a Objetos (POO)
 
+def ingresar_temperaturas():
+    temperaturas = []
+    for dia in range(7):
+        temperatura = float(input(f"Ingrese la temperatura del día {dia+1}: "))
+        temperaturas.append(temperatura)
+    return temperaturas
 
-class registroclima:
+def calcular_promedio(temperaturas):
+    suma_temperaturas = sum(temperaturas)
+    promedio = suma_temperaturas / len(temperaturas)
+    return promedio
 
-        def __init__(self):
-            self.temperaturas = []
+temperaturas_semana = ingresar_temperaturas()
+promedio_semanal = calcular_promedio(temperaturas_semana)
 
-        def ingresar_temperaturas_diarias(self):
-
-
-            for i in range(7):
-                temperatura = float(input(f"Ingrese la temperatura del dia {i + 1}: "))
-                self.temperaturas.append(temperatura)
-
-        def calcular_promedio_semanal(self):
-
-            if not self.temperaturas:
-                return 0
-            promedio = sum(self.temperaturas) / len(self.temperaturas)
-            return promedio
-
-
-def main():
-    registro = registroclima()
-    registro.ingresar_temperaturas_diarias()
-    promedio = registro.calcular_promedio_semanal()
-    print(f"El promedio semanal de temperaturas es: {promedio:.2f} grados ")
-
-if __name__ == "__main__":
-    main()
+print(f"El promedio semanal del clima es: {promedio_semanal}")
